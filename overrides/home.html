@@ -1,0 +1,372 @@
+{% extends "base.html" %}
+
+{#
+  Landing page for An Illustrated Guide to AI Agents.
+
+  The whole page lives in the `hero` block, which Zensical exposes inside
+  .md-container *above* <main>. That gives full-bleed sections without the
+  `width: 100vw; margin-left: calc(-50vw + 50%)` hack the previous book's
+  site needed — which is what caused its horizontal scrollbar.
+
+  `container` and `site_nav` are emptied out below so <main> renders nothing;
+  home.css then collapses it.
+#}
+
+{% block site_nav %}{% endblock %}
+{% block container %}{% endblock %}
+
+{# Without this the home page title renders as the site name twice. #}
+{% block htmltitle %}
+  <title>An Illustrated Guide to AI Agents &mdash; build an agent from scratch</title>
+{% endblock %}
+
+{% block hero %}
+<div class="ag-home">
+
+  <!-- ===================================================== 1. Hero ===== -->
+  <section class="ag-hero">
+    <div class="ag-hero__grid">
+
+      <div class="ag-hero__copy">
+        <p class="ag-label ag-hero__eyebrow">O&rsquo;Reilly &middot; 2026</p>
+        <h1 class="ag-hero__title">
+          An Illustrated Guide to<br>
+          <span class="ag-hero__title-em">AI Agents</span>
+        </h1>
+        <p class="ag-hero__standfirst">
+          Build an agent from scratch, in pure Python, with no framework.
+          Ten chapters, more than 300 custom figures, and one
+          <code>TinyAgent</code> you write yourself.
+        </p>
+
+        <div class="ag-hero__actions">
+          <a class="ag-btn ag-btn--primary" href="{{ config.extra.oreilly_url }}">
+            Read on O&rsquo;Reilly
+          </a>
+          <a class="ag-btn ag-btn--ghost" href="{{ config.extra.amazon_url }}">
+            Buy on Amazon
+          </a>
+        </div>
+
+        <p class="ag-hero__byline">
+          by <strong>Maarten Grootendorst</strong> &amp; <strong>Jay Alammar</strong>
+        </p>
+      </div>
+
+      <div class="ag-hero__art">
+        <a href="{{ config.extra.oreilly_url }}" class="ag-cover-link">
+          <img
+            class="ag-cover"
+            src="images/cover.webp"
+            srcset="images/cover.webp 1x, images/cover@2x.webp 2x"
+            width="520" height="693"
+            alt="Cover of An Illustrated Guide to AI Agents, showing a leaping dolphin"
+            fetchpriority="high"
+          >
+        </a>
+      </div>
+
+    </div>
+
+    <!-- The TinyAgent CLI from chapter 10, as a terminal you can watch run. -->
+    <figure class="ag-terminal" data-ag-terminal>
+      <div class="ag-terminal__chrome" aria-hidden="true">
+        <span class="ag-terminal__dot ag-terminal__dot--r"></span>
+        <span class="ag-terminal__dot ag-terminal__dot--y"></span>
+        <span class="ag-terminal__dot ag-terminal__dot--g"></span>
+        <span class="ag-terminal__name">tinyagent</span>
+      </div>
+      <div class="ag-terminal__body">
+        <img
+          class="ag-terminal__banner"
+          src="images/tinyagent_terminal.webp"
+          srcset="images/tinyagent_terminal.webp 1x, images/tinyagent_terminal@2x.webp 2x"
+          width="900" height="565"
+          alt="The TinyAgent command line starting up: a pixel-art dolphin over the word TINY AGENT, then the model, the available tools, and a prompt."
+          loading="lazy" decoding="async"
+        >
+        <p class="ag-terminal__line">
+          <span class="ag-terminal__prompt">&gt;</span>
+          <span class="ag-terminal__typed" data-ag-type="which file defines the ReAct loop?"></span><span class="ag-terminal__caret" aria-hidden="true"></span>
+        </p>
+      </div>
+      <figcaption class="ag-terminal__caption">
+        The coding agent you build in chapter 10 &mdash; roughly 400 lines of Python.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ================================================ 2. Proof strip ===== -->
+  <section class="ag-stats">
+    <dl class="ag-stats__grid">
+      <div class="ag-stat">
+        <dt class="ag-label">Custom figures</dt>
+        <dd class="ag-stat__n">300<span class="ag-stat__plus">+</span></dd>
+      </div>
+      <div class="ag-stat">
+        <dt class="ag-label">Chapters</dt>
+        <dd class="ag-stat__n">10</dd>
+      </div>
+      <div class="ag-stat ag-stat--hero">
+        <dt class="ag-label">Frameworks used</dt>
+        <dd class="ag-stat__n">0</dd>
+      </div>
+      <div class="ag-stat">
+        <dt class="ag-label">Written in</dt>
+        <dd class="ag-stat__n ag-stat__n--word">Pure&nbsp;Python</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ============================================ 3. TinyAgent grows ===== -->
+  <section class="ag-grow" id="build">
+    <div class="ag-section-head">
+      <p class="ag-label">The through-line</p>
+      <h2 class="ag-h2">One class, assembled over ten chapters</h2>
+      <p class="ag-lede">
+        Every chapter explains one idea, then bolts the matching module onto
+        the agent you are building. By chapter&nbsp;10 the placeholder below is
+        a working coding agent &mdash; and you wrote all of it.
+      </p>
+    </div>
+
+    <div class="ag-grow__panel">
+      <pre class="ag-grow__code"><code><span class="tk-k">class</span> <span class="tk-t">TinyAgent</span>:
+    <span class="tk-s">"""A minimal, modular, and educational agent framework."""</span>
+
+    <span class="tk-k">def</span> <span class="tk-f">__init__</span>(<span class="tk-v">self</span>):
+<span class="ag-grow__line" data-ch="1">        <span class="tk-v">self</span>.llm       = <span class="tk-n">None</span>  <span class="tk-c"># Chapters 2 &amp; 3 &mdash; Add LLM</span></span>
+<span class="ag-grow__line" data-ch="2">        <span class="tk-v">self</span>.memory    = <span class="tk-n">None</span>  <span class="tk-c"># Chapter 4 &mdash; Add Memory</span></span>
+<span class="ag-grow__line" data-ch="3">        <span class="tk-v">self</span>.tools     = <span class="tk-n">None</span>  <span class="tk-c"># Chapter 5 &mdash; Add Tools</span></span>
+<span class="ag-grow__line" data-ch="4">        <span class="tk-v">self</span>.planner   = <span class="tk-n">None</span>  <span class="tk-c"># Chapter 6 &mdash; Add Planning</span></span>
+<span class="ag-grow__line" data-ch="5">        <span class="tk-v">self</span>.reflector = <span class="tk-n">None</span>  <span class="tk-c"># Chapter 6 &mdash; Add Reflection</span></span>
+<span class="ag-grow__line" data-ch="6">        <span class="tk-v">self</span>.skills    = <span class="tk-n">None</span>  <span class="tk-c"># Chapter 6 &mdash; Add Skills</span></span>
+
+    <span class="tk-k">def</span> <span class="tk-f">run</span>(<span class="tk-v">self</span>, task: <span class="tk-t">str</span>) -&gt; <span class="tk-t">str</span>:
+        <span class="tk-s">"""Run the agent on a task."""</span>
+        <span class="tk-k">return</span> <span class="tk-v">self</span>._step(task)</code></pre>
+
+      <figure class="ag-grow__fig">
+        <img
+          class="plate"
+          src="images/tinyagents.webp"
+          srcset="images/tinyagents.webp 1x, images/tinyagents@2x.webp 2x"
+          width="900" height="385"
+          alt="Diagram: a TinyAgent box built from LLM, Trajectory, Memory, Tools, MCP, ReAct and Display components, each labelled with the chapter that introduces it."
+          loading="lazy" decoding="async"
+        >
+        <figcaption>Every module, and the chapter it arrives in.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================== 4. How it teaches ===== -->
+  <section class="ag-method">
+    <div class="ag-section-head">
+      <p class="ag-label">Method</p>
+      <h2 class="ag-h2">Built to be understood, not just run</h2>
+    </div>
+
+    <div class="ag-method__grid">
+      <article class="ag-card ag-card--wide">
+        <img class="plate ag-card__img"
+             src="images/annotated.webp" srcset="images/annotated.webp 1x, images/annotated@2x.webp 2x" width="900" height="308"
+             alt="A TinyAgent code listing with plain-English notes pointing at the run and _step methods."
+             loading="lazy" decoding="async">
+        <div class="ag-card__body">
+          <h3 class="ag-card__title">Annotated code</h3>
+          <p>Lines are explained where they sit, so you never lose the thread between the idea and its implementation.</p>
+        </div>
+      </article>
+
+      <article class="ag-card ag-card--wide">
+        <img class="plate ag-card__img"
+             src="images/diffs.webp" srcset="images/diffs.webp 1x, images/diffs@2x.webp 2x" width="900" height="385"
+             alt="A colour-coded diff showing lines added to and removed from the TinyAgent class."
+             loading="lazy" decoding="async">
+        <div class="ag-card__body">
+          <h3 class="ag-card__title">Changes shown as diffs</h3>
+          <p>When a chapter reshapes the agent, you see exactly what moved &mdash; the same way you would read a pull request.</p>
+        </div>
+      </article>
+
+      <article class="ag-card ag-card--wide">
+        <img class="plate ag-card__img"
+             src="images/overview.webp" srcset="images/overview.webp 1x, images/overview@2x.webp 2x" width="900" height="514"
+             alt="Diagram of an agent loop: user query, a reasoning LLM with memory, tools and planning, acting on an environment and receiving feedback."
+             loading="lazy" decoding="async">
+        <div class="ag-card__body">
+          <h3 class="ag-card__title">A map you keep returning to</h3>
+          <p>One architecture diagram runs through the whole book, gaining detail as each chapter lands.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================================================= 5. Chapters ===== -->
+  <section class="ag-chapters" id="chapters">
+    <div class="ag-section-head">
+      <p class="ag-label">Table of contents</p>
+      <h2 class="ag-h2">Ten chapters, ten notebooks</h2>
+      <p class="ag-lede">
+        Every chapter ships a Colab notebook that runs free on a T4 &mdash; or
+        locally, if you would rather keep it on your own machine.
+      </p>
+    </div>
+
+    <ol class="ag-ch-grid">
+      {% set chapters = [
+        {"n": "01", "title": "Introduction to AI Agents",     "module": "agent.py",    "img": true,  "blurb": "What separates an agent from a chatbot, and the loop underneath all of it."},
+        {"n": "02", "title": "Large Language Models",          "module": "llm.py",      "img": true,  "blurb": "The engine. Prompts, sampling, and the trajectory an agent accumulates."},
+        {"n": "03", "title": "Reasoning Large Language Models","module": "llm.py",      "img": true,  "blurb": "Test-time compute, chain of thought, and models trained to think before answering."},
+        {"n": "04", "title": "Memory &amp; Search",                "module": "memory.py",   "img": true,  "blurb": "Short-term context, long-term recall, and retrieving the right thing at the right moment."},
+        {"n": "05", "title": "Tools &amp; MCP",                    "module": "toolbox.py",  "img": true,  "blurb": "Giving the agent hands: tool schemas, native tool calling, and the Model Context Protocol."},
+        {"n": "06", "title": "Planning &amp; Reflection",          "module": "planning.py", "img": true,  "blurb": "ReAct, self-critique, and skills — the loop that lets an agent recover from its own mistakes."},
+        {"n": "07", "title": "Evaluating Agents",              "module": "—",           "img": false, "blurb": "How you tell a working agent from a lucky one, and what to measure when there is no single answer."},
+        {"n": "08", "title": "Multi-Agent Collaboration",      "module": "—",           "img": false, "blurb": "Several agents, one task: delegation, hand-offs, and when a crowd genuinely beats a soloist."},
+        {"n": "09", "title": "Multimodal Understanding",       "module": "—",           "img": false, "blurb": "Agents that see. Vision-language models, screenshots, and acting on what is on screen."},
+        {"n": "10", "title": "Coding Agents",                  "module": "display.py",  "img": true,  "blurb": "Everything assembled into a command-line coding agent you can actually use."}
+      ] %}
+
+      {% for ch in chapters %}
+      <li class="ag-ch">
+        <a class="ag-ch__link" href="book/chapter-{{ ch.n }}/">
+          <span class="ag-ch__thumb">
+            {% if ch.img %}
+              <img src="images/ch{{ ch.n | int }}.webp" srcset="images/ch{{ ch.n | int }}.webp 1x, images/ch{{ ch.n | int }}@2x.webp 2x" width="900" height="600" alt="" loading="lazy" decoding="async">
+            {% else %}
+              <span class="ag-ch__monogram" aria-hidden="true">{{ ch.n }}</span>
+            {% endif %}
+          </span>
+          <span class="ag-ch__body">
+            <span class="ag-label ag-ch__n">Chapter {{ ch.n }}</span>
+            <span class="ag-ch__title">{{ ch.title | safe }}</span>
+            <span class="ag-ch__blurb">{{ ch.blurb | safe }}</span>
+            <span class="ag-ch__module">{{ ch.module }}</span>
+          </span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <!-- ================================================== 6. Figures ===== -->
+  <section class="ag-figures">
+    <div class="ag-section-head">
+      <p class="ag-label">Illustration</p>
+      <h2 class="ag-h2">More than 300 figures, drawn for this book</h2>
+      <p class="ag-lede">
+        Not stock diagrams and not screenshots of someone else&rsquo;s slides.
+        Here are five of them.
+      </p>
+    </div>
+
+    <div class="ag-fig-strip">
+      <figure class="ag-fig">
+        <img class="plate" src="images/evolution.webp" srcset="images/evolution.webp 1x, images/evolution@2x.webp 2x" alt="A timeline of how language models evolved into agents." loading="lazy" decoding="async">
+        <figcaption>The road to agents</figcaption>
+      </figure>
+      <figure class="ag-fig">
+        <img class="plate" src="images/ch5_tools.webp" srcset="images/ch5_tools.webp 1x, images/ch5_tools@2x.webp 2x" alt="Diagram of how a tool definition reaches a language model and how the call comes back." loading="lazy" decoding="async">
+        <figcaption>How a tool call works</figcaption>
+      </figure>
+      <figure class="ag-fig">
+        <img class="plate" src="images/ch5_mcp_client.webp" srcset="images/ch5_mcp_client.webp 1x, images/ch5_mcp_client@2x.webp 2x" alt="Diagram of an MCP client connecting an agent to external servers." loading="lazy" decoding="async">
+        <figcaption>The MCP client</figcaption>
+      </figure>
+      <figure class="ag-fig">
+        <img class="plate" src="images/ch5_mcp_server.webp" srcset="images/ch5_mcp_server.webp 1x, images/ch5_mcp_server@2x.webp 2x" alt="Diagram of an MCP server exposing tools, resources and prompts." loading="lazy" decoding="async">
+        <figcaption>The MCP server</figcaption>
+      </figure>
+      <figure class="ag-fig">
+        <img class="plate" src="images/agent.svg" alt="A detailed illustration of an agent's internal components." loading="lazy" decoding="async">
+        <figcaption>Anatomy of an agent</figcaption>
+      </figure>
+    </div>
+
+    <p class="ag-figures__more">
+      <a class="ag-btn ag-btn--ghost" href="figures/">See the full gallery</a>
+    </p>
+  </section>
+
+  <!-- ================================================== 7. Reviews ===== -->
+  <section class="ag-reviews" id="reviews">
+    <div class="ag-section-head">
+      <p class="ag-label">Endorsements</p>
+      <h2 class="ag-h2">What readers are saying</h2>
+    </div>
+    <p class="ag-reviews__pending">
+      Endorsements are being collected ahead of publication and will appear here.
+    </p>
+  </section>
+
+  <!-- ================================================== 8. Authors ===== -->
+  <section class="ag-authors" id="authors">
+    <div class="ag-section-head">
+      <p class="ag-label">Authors</p>
+      <h2 class="ag-h2">Who wrote this</h2>
+    </div>
+
+    <div class="ag-authors__grid">
+      <article class="ag-author">
+        <img class="ag-author__photo" src="images/maarten.webp" width="400" height="400" alt="Maarten Grootendorst" loading="lazy" decoding="async">
+        <div>
+          <h3 class="ag-author__name">Maarten Grootendorst</h3>
+          <p class="ag-author__role">Author of BERTopic, KeyBERT and PolyFuzz</p>
+          <p>
+            Maarten holds two master&rsquo;s degrees in psychology and one in data
+            science, which he puts to work making difficult ideas visual on his
+            <a href="https://newsletter.maartengrootendorst.com/">AI blog</a>.
+            His open source packages have been downloaded millions of times.
+          </p>
+        </div>
+      </article>
+
+      <article class="ag-author">
+        <img class="ag-author__photo" src="images/jay.webp" width="400" height="400" alt="Jay Alammar" loading="lazy" decoding="async">
+        <div>
+          <h3 class="ag-author__name">Jay Alammar</h3>
+          <p class="ag-author__role">Director and Engineering Fellow at Cohere</p>
+          <p>
+            Through his <a href="https://jalammar.github.io/">illustrated AI blog</a>,
+            Jay has helped millions of engineers picture how machine learning
+            actually works &mdash; from Transformers and BERT to diffusion models.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================================================== 9. Get it ===== -->
+  <section class="ag-buy" id="get-the-book">
+    <div class="ag-buy__inner">
+      <h2 class="ag-h2 ag-buy__title">Get the book</h2>
+      <p class="ag-buy__lede">
+        Published by O&rsquo;Reilly. All the code is free and open on GitHub,
+        whether or not you buy it.
+      </p>
+
+      <div class="ag-buy__actions">
+        <a class="ag-btn ag-btn--primary" href="{{ config.extra.oreilly_url }}">Read on O&rsquo;Reilly</a>
+        <a class="ag-btn ag-btn--ghost" href="{{ config.extra.amazon_url }}">Buy on Amazon</a>
+        <a class="ag-btn ag-btn--ghost" href="{{ config.extra.repo_book }}">Code on GitHub</a>
+      </div>
+
+      <p class="ag-buy__isbn"><span class="ag-label">ISBN</span> 979-8341662698</p>
+
+      <details class="ag-cite">
+        <summary>Cite this book</summary>
+        <pre class="ag-cite__code"><code>@book{illustrated-agents-book,
+  author       = {Maarten Grootendorst and Jay Alammar},
+  title        = {An Illustrated Guide to AI Agents},
+  publisher    = {O'Reilly},
+  year         = {2026},
+  isbn         = {979-8341662698},
+  url          = {https://www.oreilly.com/library/view/an-illustrated-guide/9798341662681/}
+}</code></pre>
+      </details>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+[project]
+name = "agents-book-website"
+version = "0.1.0"
+description = "Companion website for the book 'An Illustrated Guide to AI Agents'"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    # Pinned deliberately: Zensical is pre-1.0 and ships breaking changes.
+    # Bump only alongside a visual check of the built site.
+    "zensical==0.0.57",
+    "pillow>=11.0",
+]
