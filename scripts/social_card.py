@@ -65,7 +65,7 @@ def main() -> int:
 
     # Eyebrow
     f_eyebrow = font("mono", 20)
-    draw.text((x, PAD + 6), "O'REILLY  ·  2026", font=f_eyebrow, fill=DOLPHIN)
+    draw.text((x, PAD + 6), "300+ CUSTOM ILLUSTRATIONS", font=f_eyebrow, fill=DOLPHIN)
 
     # Title
     f_title = font("bold", 62)
@@ -85,7 +85,7 @@ def main() -> int:
 
     # Standfirst
     f_body = font("regular", 27)
-    for line in ("Build an agent from scratch,", "in pure Python. 300+ figures."):
+    for line in ("Explore the fundamentals", "of AI agents!"):
         draw.text((x, y), line, font=f_body, fill=INK_SOFT)
         y += 36
 

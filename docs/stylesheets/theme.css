@@ -57,8 +57,9 @@
    -------------------------------------------------------------------------- */
 
 [data-md-color-scheme="default"] {
-  --ag-bg:          #f4f7fa;
-  --ag-bg-sunk:     #e8eef4;
+  /* Shared with llm-book.com so both book sites feel like one family. */
+  --ag-bg:          #f0f4f8;
+  --ag-bg-sunk:     #d9e2e7;
   --ag-surface:     #ffffff;
   --ag-ink:         #141b25;
   --ag-ink-2:       #3b4a5c;
@@ -81,47 +82,15 @@
 }
 
 /* --------------------------------------------------------------------------
-   Layer 1c — dark scheme
-   -------------------------------------------------------------------------- */
-
-[data-md-color-scheme="slate"] {
-  --ag-bg:          #0c121b;
-  --ag-bg-sunk:     #080d15;
-  --ag-surface:     #141c28;
-  --ag-ink:         #e4ebf3;
-  --ag-ink-2:       #b0bfd0;
-  --ag-ink-3:       #7f92a8;
-  --ag-rule:        #26313f;
-
-  --ag-accent:      #7fb2e2;
-  --ag-accent-hi:   #a3c9ed;
-  /* The dark-scheme accent is a light blue, so button text must go dark
-     here — white on it measures 2.2:1. */
-  --ag-on-accent:   #0c121b;
-  --ag-agent-ink:   #d9a2d4;
-  --ag-module-ink:  #9cdcfe;
-
-  /* Book figures are drawn on white. In dark mode they sit on a light plate
-     (see .plate below) rather than being filter-inverted, which would destroy
-     the purple and blue that carry meaning in the diagrams. */
-  --ag-plate:       #f2f5f8;
-  --ag-shadow:      0 1px 2px rgb(0 0 0 / 40%), 0 6px 20px -8px rgb(0 0 0 / 55%);
-  --ag-shadow-lift: 0 2px 4px rgb(0 0 0 / 45%), 0 16px 34px -12px rgb(0 0 0 / 65%);
-
-  --ag-code-bg:     #060b12;
-  --ag-code-fg:     #cddae8;
-}
-
-/* --------------------------------------------------------------------------
    Layer 2 — map brand tokens onto the theme's own variables
    -------------------------------------------------------------------------- */
 
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color:        #161e2a;
-  --md-primary-fg-color--light: #35485f;
-  --md-primary-fg-color--dark:  #0d131c;
-  --md-primary-bg-color:        #ffffff;
-  --md-primary-bg-color--light: #dbe3ec;
+  --md-primary-fg-color:        #f0f4f8;
+  --md-primary-fg-color--light: #ffffff;
+  --md-primary-fg-color--dark:  #d9e2e7;
+  --md-primary-bg-color:        #141b25;
+  --md-primary-bg-color--light: #3b4a5c;
 
   --md-accent-fg-color:         var(--ag-accent);
   --md-accent-fg-color--transparent: rgb(47 93 135 / 10%);
@@ -135,27 +104,6 @@
   --md-typeset-a-color:         var(--ag-accent);
   --md-footer-bg-color:         #10161f;
   --md-footer-bg-color--dark:   #0a0f16;
-}
-
-[data-md-color-scheme="slate"] {
-  --md-primary-fg-color:        #0c121b;
-  --md-primary-fg-color--light: #26313f;
-  --md-primary-fg-color--dark:  #060b12;
-  --md-primary-bg-color:        #e4ebf3;
-  --md-primary-bg-color--light: #93a5b9;
-
-  --md-accent-fg-color:         var(--ag-accent);
-  --md-accent-fg-color--transparent: rgb(127 178 226 / 14%);
-
-  --md-default-bg-color:        var(--ag-bg);
-  --md-default-fg-color:        var(--ag-ink);
-  --md-default-fg-color--light: var(--ag-ink-2);
-  --md-default-fg-color--lighter: var(--ag-ink-3);
-
-  --md-typeset-color:           var(--ag-ink);
-  --md-typeset-a-color:         var(--ag-accent);
-  --md-footer-bg-color:         #060b12;
-  --md-footer-bg-color--dark:   #04080d;
 }
 
 /* ==========================================================================
@@ -231,13 +179,13 @@ img.plate,
    ========================================================================== */
 
 .md-header {
-  box-shadow: 0 1px 0 rgb(255 255 255 / 8%);
+  box-shadow: 0 1px 0 rgb(20 27 37 / 10%);
   backdrop-filter: saturate(1.4) blur(6px);
 }
 
 .md-header__title { font-weight: 600; }
 
-.md-tabs { border-bottom: 1px solid rgb(255 255 255 / 8%); }
+.md-tabs { border-bottom: 1px solid var(--ag-rule); }
 .md-tabs__link { font-size: 0.72rem; letter-spacing: 0.01em; opacity: 0.78; }
 .md-tabs__link--active,
 .md-tabs__link:hover { opacity: 1; }
@@ -250,11 +198,6 @@ img.plate,
 
 .md-typeset pre > code {
   border-radius: var(--ag-radius-sm);
-}
-
-[data-md-color-scheme="slate"] .md-typeset .highlight > pre > code,
-[data-md-color-scheme="slate"] .md-typeset pre > code {
-  background: var(--ag-code-bg);
 }
 
 /* ==========================================================================

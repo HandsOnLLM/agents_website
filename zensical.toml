@@ -1,7 +1,7 @@
 [project]
 site_name = "An Illustrated Guide to AI Agents"
-site_url = "https://www.agents-book.com/"
-site_description = "Build an AI agent from scratch in pure Python. The companion site for An Illustrated Guide to AI Agents by Maarten Grootendorst and Jay Alammar, with 300+ custom figures."
+site_url = "https://ai-agents-book.com/"
+site_description = "With more than 300 custom illustrations, explore the fundamentals of AI agents in An Illustrated Guide to AI Agents."
 site_author = "Maarten Grootendorst & Jay Alammar"
 copyright = "Copyright &copy; 2026 Maarten Grootendorst &amp; Jay Alammar"
 
@@ -14,34 +14,18 @@ extra_css = [
 ]
 
 extra_javascript = [
-  { path = "javascripts/terminal.js", type = "module" },
+  { path = "javascripts/scroll-animations.js", type = "module" },
 ]
 
 nav = [
-  { "Home" = "index.md" },
-  { "The Book" = [
-    "book/index.md",
-    "book/chapter-01.md",
-    "book/chapter-02.md",
-    "book/chapter-03.md",
-    "book/chapter-04.md",
-    "book/chapter-05.md",
-    "book/chapter-06.md",
-    "book/chapter-07.md",
-    "book/chapter-08.md",
-    "book/chapter-09.md",
-    "book/chapter-10.md",
-  ] },
-  { "TinyAgent" = [
-    "tinyagent/index.md",
-    "setup/index.md",
-  ] },
-  { "Resources" = [
-    "figures/index.md",
-    "glossary.md",
-    "bibliography.md",
-  ] },
+  { "Reviews" = "#reviews" },
+  { "About the Book" = "#about" },
+  { "Table of Contents" = "#chapters" },
+  { "About the Authors" = "#authors" },
 ]
+
+[project.plugins.search]
+enabled = false
 
 [project.theme]
 custom_dir = "overrides"
@@ -64,8 +48,6 @@ features = [
   "navigation.tabs.sticky",
   "navigation.top",
   "navigation.tracking",
-  "search.highlight",
-  "search.suggest",
   "toc.follow",
 ]
 
@@ -75,21 +57,10 @@ code = "JetBrains Mono"
 
 # Colours are defined as CSS custom properties in stylesheets/theme.css,
 # sampled from the book's own figures. See the "custom" values below.
-[[project.theme.palette]]
-media = "(prefers-color-scheme: light)"
+[project.theme.palette]
 scheme = "default"
 primary = "custom"
 accent = "custom"
-toggle.icon = "lucide/sun"
-toggle.name = "Switch to dark mode"
-
-[[project.theme.palette]]
-media = "(prefers-color-scheme: dark)"
-scheme = "slate"
-primary = "custom"
-accent = "custom"
-toggle.icon = "lucide/moon"
-toggle.name = "Switch to light mode"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
@@ -97,20 +68,14 @@ link = "https://github.com/HandsOnLLM/An-Illustrated-Guide-To-AI-Agents"
 name = "The code on GitHub"
 
 [[project.extra.social]]
-icon = "fontawesome/solid/book"
-link = "https://www.oreilly.com/library/view/an-illustrated-guide/9798341662681/"
-name = "Read on O'Reilly"
-
-[[project.extra.social]]
 icon = "fontawesome/brands/amazon"
 link = "https://www.amazon.com/Illustrated-Guide-AI-Agents-Concepts/dp/B0GTYL2QSJ"
 name = "Buy on Amazon"
 
 [project.extra]
-# Buy links, referenced from templates so they live in one place.
-oreilly_url = "https://www.oreilly.com/library/view/an-illustrated-guide/9798341662681/"
+# Buy link, referenced from templates so it lives in one place.
 amazon_url = "https://www.amazon.com/Illustrated-Guide-AI-Agents-Concepts/dp/B0GTYL2QSJ"
-repo_book = "https://github.com/HandsOnLLM/An-Illustrated-Guide-To-AI-Agents"
+generator = false
 
 [project.markdown_extensions]
 abbr = {}
